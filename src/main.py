@@ -99,8 +99,7 @@ def main():
 
     model_path, log_path = set_path(args)
     normal_lr = keras.callbacks.LearningRateScheduler(step_decay)
-    tbcallbacks = keras.callbacks.TensorBoard(log_dir=log_path, histogram_freq=0, write_graph=True, write_images=False,
-                                              update_freq=args.batch_size)
+    tbcallbacks = keras.callbacks.TensorBoard(log_dir=log_path, histogram_freq=0, write_graph=True, write_images=False)
     callbacks = [keras.callbacks.ModelCheckpoint(os.path.join(model_path, 'weights-{epoch:02d}-{acc:.3f}.h5'),
                                                  monitor='loss',
                                                  mode='min',
